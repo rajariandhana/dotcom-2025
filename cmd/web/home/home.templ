@@ -1,0 +1,116 @@
+package home
+
+import (
+    "dotcom-2025/cmd/web"
+)
+
+templ Home() {
+	@web.Base() {
+		@Hero()
+        @RecentProjects()
+        @BestShots(GetShots())
+        @ShowEducation(GetEducation())
+	}
+}
+
+templ Hero() {
+	<div class="w-full mb-12">
+        <div class="flex">
+            <img src="assets/ProfilePicture.jpg" alt="cmd/web/assets/ProfilePicture.jpg"
+                class="size-32 rounded-full object-cover
+            bg-indigo-rose p-1 mb-12"/>
+        </div>
+        @HelloWorldMessage(GetHelloWorld())
+        <p class="text-justify">
+            You'll find several of my best works such as my projects as a developer, my interest in photography, clothes that I design and sell, as well as other surprises.
+        </p>
+        <span class="text-sm text-gray-600">
+            Feel free to hit me up in any of my social media
+        </span>
+    </div>
+    
+}
+
+templ HelloWorldMessage(words []string) {
+    <h1 class="font-mono font-bold">
+        🌎 <span class="text-indigo-rose" id="helloWorld"></span>
+        <div id="flip" class="text-indigo-rose">
+            for _, word := range words {
+                <div>
+                    <div>
+                        { word }
+                    </div>
+                </div>
+            }
+        </div>
+    </h1>
+    <script>
+        const words = {{words}}
+        console.log(words);
+        // let index = 0;
+        // const wordEl = document.getElementById("helloWorld");
+        // function updateWord() {
+        //     wordEl.style.opacity = 0;
+        //     setTimeout(()=>{
+        //         wordEl.textContent = words[index];
+        //         wordEl.style.opacity = 1;
+        //         index = (index + 1 ) % words.length;
+        //     }, 300);
+        // }
+        // updateWord();
+        // setInterval(updateWord, 3000);
+    </script>
+}
+
+templ RecentProjects() {
+    <h2 class="text-2xl font-bold mb-2 cursor-pointer">
+        🚀  Recent Projects
+    </h2>
+    <div class="w-full mb-12 grid grid-cols-3 gap-x-4">
+        @ProjectCard()
+        @ProjectCard()
+        @ProjectCard()
+    </div>
+}
+
+templ ProjectCard() {
+    <a href="/" class="base w-full h-40 gap-y-2 hover:-rotate-3 group hover:scale-105 transition-all ease-out duration-300 z-10 cursor-pointer">
+        <span class="bg-red-200 w-full h-full rounded-md"></span>
+        <span>Project.Name</span>
+    </a>
+}
+
+templ BestShots(paths []string) {
+    <h2 class="text-2xl font-bold mb-2 cursor-pointer">
+        📸 Best Shots
+    </h2>
+    <div class="grid grid-cols-3 gap-4 mb-12">
+        for _, path := range paths {
+            <div class="shadow-xl hover:-rotate-3 group hover:scale-105 transition-all ease-out duration-300 z-10 cursor-pointer">
+                <img class="w-64 p-1 bg-white"
+                src={path}
+                alt={path}>
+            </div>
+        }
+    </div>
+}
+
+templ ShowEducation(educations []Education){
+    <h2 class="text-2xl font-bold mb-2 cursor-pointer">
+        🎓 Education
+    </h2>
+    <ul class="mb-12">
+        for _, education := range educations {
+            <li class="flex gap-x-4 items-center p-4 rounded-xl shadow-md bg-white mb-4">
+                <img src={"assets/logo/" + education.Slug + "-logo.jpeg"}
+                alt={"assets/logo/" + education.Slug + "-logo.jpeg"}
+                class="size-12"/>
+                <div>
+                    <h3 class="text-lg font-semibold -mb-2">{ education.Name }</h3>
+                    <span class="text-sm text-gray-500 -mb-2">{ education.Start } - { education.End }</span>
+                    <p>{ education.Description }</p>
+                </div>
+            </li>
+        }
+    </ul>
+}

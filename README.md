@@ -37,3 +37,14 @@ Clean up binary from the last build:
 ```bash
 make clean
 ```
+
+## Path err someshit
+```sh
+GOPATH=$HOME/go  PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+source ~/.zshrc
+```
+
+```sh
+cp .env.example .env
+npm install
+```

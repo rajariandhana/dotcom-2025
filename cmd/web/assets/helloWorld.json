@@ -1,0 +1,24 @@
+[
+    { "language": "English", "text": "Hello, world!" },
+    { "language": "Indonesia", "text": "Halo, dunia!" },
+    { "language": "Spanish", "text": "¡Hola, mundo!" },
+    { "language": "French", "text": "Bonjour, le monde!" },
+    { "language": "German", "text": "Hallo, Welt!" },
+    { "language": "Italian", "text": "Ciao, mondo!" },
+    { "language": "Portuguese", "text": "Olá, mundo!" },
+    { "language": "Russian", "text": "Привет, мир!" },
+    { "language": "Chinese (Simplified)", "text": "你好，世界！" },
+    { "language": "Japanese", "text": "こんにちは、世界！" },
+    { "language": "Korean", "text": "안녕, 세상!" },
+    { "language": "Arabic", "text": "مرحباً، أيها العالم!" },
+    { "language": "Hindi", "text": "नमस्ते, दुनिया!" },
+    { "language": "Bengali", "text": "হ্যালো, ওয়ার্ল্ড!" },
+    { "language": "Turkish", "text": "Merhaba, dünya!" },
+    { "language": "Vietnamese", "text": "Xin chào, thế giới!" },
+    { "language": "Swahili", "text": "Hujambo, dunia!" },
+    { "language": "Greek", "text": "Γειά σου, κόσμε!" },
+    { "language": "Hebrew", "text": "שלום, עולם!" },
+    { "language": "Thai", "text": "สวัสดี, โลก!" },
+    { "language": "Dutch", "text": "Hallo, wereld!" }
+]
+  

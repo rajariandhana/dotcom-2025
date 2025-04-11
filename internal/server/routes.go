@@ -2,12 +2,14 @@ package server
 
 import (
 	"dotcom-2025/cmd/web"
+	"dotcom-2025/cmd/web/home"
+	"net/http"
+
 	"github.com/a-h/templ"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/adaptor"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/filesystem"
-	"net/http"
 )
 
 func (s *FiberServer) RegisterFiberRoutes() {
@@ -20,7 +22,7 @@ func (s *FiberServer) RegisterFiberRoutes() {
 		MaxAge:           300,
 	}))
 
-	s.App.Get("/", s.HelloWorldHandler)
+	s.App.Get("/", adaptor.HTTPHandler(templ.Handler(home.Home())))
 
 	s.App.Get("/health", s.healthHandler)
 

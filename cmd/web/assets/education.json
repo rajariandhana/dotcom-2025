@@ -1,0 +1,16 @@
+[
+    {
+        "name":"University of Queensland",
+        "slug":"uq",
+        "start":"February 2025",
+        "end":"Present",
+        "description":"Enrolled in Bachelor of Computer Science with Major in Cyber Security. Expected to graduate in July 2026."
+    },
+    {
+        "name":"Sepuluh Nopember Institute of Technology",
+        "slug":"its",
+        "start":"August 2022",
+        "end":"Present",
+        "description":"Enrolled in Informatics Engineering International Undergraduate Program. 3.51 GPA on a 4 scale system for 105 credits throughout 5 semesters. Expected to graduate in July 2026."
+    }
+]
