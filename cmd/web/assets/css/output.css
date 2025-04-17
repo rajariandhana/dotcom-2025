@@ -200,9 +200,6 @@
   .fixed {
     position: fixed;
   }
-  .static {
-    position: static;
-  }
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
@@ -332,6 +329,9 @@
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
+  .gap-10 {
+    gap: calc(var(--spacing) * 10);
+  }
   .gap-x-4 {
     column-gap: calc(var(--spacing) * 4);
   }
@@ -340,6 +340,9 @@
   }
   .gap-y-12 {
     row-gap: calc(var(--spacing) * 12);
+  }
+  .overflow-hidden {
+    overflow: hidden;
   }
   .rounded {
     border-radius: 0.25rem;
@@ -368,6 +371,9 @@
   }
   .border-gray-400 {
     border-color: var(--color-gray-400);
+  }
+  .bg-black {
+    background-color: var(--color-black);
   }
   .bg-blue-900 {
     background-color: var(--color-blue-900);
@@ -656,41 +662,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 #flip div:first-child {
   animation: show 5s linear infinite;
-}
-@keyframes show {
-  0% {
-    margin-top: -200px;
-  }
-  10% {
-    margin-top: -180px;
-  }
-  20% {
-    margin-top: -160px;
-  }
-  30% {
-    margin-top: -140px;
-  }
-  40% {
-    margin-top: -120px;
-  }
-  50% {
-    margin-top: -100px;
-  }
-  60% {
-    margin-top: -80px;
-  }
-  70% {
-    margin-top: -60px;
-  }
-  80% {
-    margin-top: -40px;
-  }
-  90% {
-    margin-top: -20px;
-  }
-  100% {
-    margin-top: -200px;
-  }
 }
 @property --tw-translate-x {
   syntax: "*";
