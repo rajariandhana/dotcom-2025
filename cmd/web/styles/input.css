@@ -17,6 +17,9 @@ body {
 .text-indigo-rose {
     @apply bg-gradient-to-r from-indigo-500 to-rose-500 inline-block text-transparent bg-clip-text text-xl;
 }
+.funny-rotate {
+    @apply hover:-rotate-3 hover:scale-105 transition-all ease-out duration-300 z-10 cursor-pointer;
+}
 
 #flip {
     background-color: orange;

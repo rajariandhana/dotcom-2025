@@ -2,8 +2,10 @@ package home
 
 import (
 	"bytes"
+	"dotcom-2025/cmd/web/projects"
 	"encoding/json"
 	"log"
+	"net/http"
 	"os"
 )
 
@@ -31,6 +33,15 @@ func GetHelloWorld() []string {
 	return words
 }
 
+func GetRecentProject() []projects.Project {
+	var slugs = []string{"boombatag-2024", "box-of-curiosity", "minesweeper"}
+	projects := projects.GetSomeProjects(slugs[:])
+	// for _, project := range projects {
+	// 	fmt.Println(project.Slug)
+	// }
+	return projects
+}
+
 func GetShots() []string {
 	var paths = []string{"9509", "9525", "9652"}
 	for i, path := range paths {
@@ -45,15 +56,18 @@ type Education struct {
 	Start       string `json:"start"`
 	End         string `json:"end"`
 	Description string `json:"description"`
+	Link        string `json:"link"`
 }
 
 func GetEducation() []Education {
-	data, err := os.ReadFile("cmd/web/assets/education.json")
+	resp, err := http.Get("http://localhost:8080/api/educations")
 	if err != nil {
-		log.Fatal(err)
+		return nil
 	}
+	defer resp.Body.Close()
+
 	var educations []Education
-	err = json.NewDecoder(bytes.NewBuffer(data)).Decode(&educations)
+	err = json.NewDecoder(resp.Body).Decode(&educations)
 	if err != nil {
 		log.Fatal(err)
 	}
