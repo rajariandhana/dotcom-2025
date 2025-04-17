@@ -1,4 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
+/* @font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto/static/Roboto_Condensed-Regular.ttf");
+} */
+@theme {
+  --font-roboto: "Roboto", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+}
 
 body {
     background-size: 69px 69px;
@@ -6,6 +16,10 @@ body {
     /* linear-gradient(to right,#bdbdbd 1px, transparent 1px), */
     /* linear-gradient(to bottom,#bdbdbd 1px, transparent 1px); */
     radial-gradient(circle, #bdbdbd 2px, rgba(0, 0, 0, 0) 1px);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold;
 }
 
 .base {
@@ -19,6 +33,9 @@ body {
 }
 .funny-rotate {
     @apply hover:-rotate-3 hover:scale-105 transition-all ease-out duration-300 z-10 cursor-pointer;
+}
+.btn {
+    @apply bg-indigo-500 px-4 py-2 rounded-md shadow-md text-white w-fit;
 }
 
 #flip {

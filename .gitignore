@@ -38,3 +38,5 @@ main
 tailwindcss
 
 /node_modules
+
+/cmd/web/assets/fonts

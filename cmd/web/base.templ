@@ -9,15 +9,80 @@ templ Base() {
 			<title>ralfazza.com</title>
 			<link href="assets/css/output.css" rel="stylesheet"/>
 			<script src="assets/js/htmx.min.js"></script>
-			// <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+			<script src="//unpkg.com/alpinejs" defer></script>
+
+			// TODO: fix this importing shit instead of cdn
+			// <script type="module">
+			// 	import Alpine from "/node_modules/alpinejs/dist/module.esm.js";
+			// 	window.Alpine = Alpine
+			// 	Alpine.start()
+			// </script>
 		</head>
-		<body class="bg-gray-100">
+		<body class="bg-gray-100 font-jakarta">
+			@Nav()
 			<main class="flex flex-col justify-center pt-24 px-6 py-6 mx-auto max-w-3xl sm:px-6 lg:px-8 lg:mt-12 gap-y-12">
 				{ children... }
 			</main>
 			@Footer()
+			<script>
+				// console.log(window.location.pathname === "/")
+				var path = window.location.pathname
+				document.addEventListener("DOMContentLoaded", () => {
+					document.querySelectorAll('.nav-link').forEach(link => {
+						if(link.getAttribute('href') === path) {
+							link.classList.add('bg-blue-900')
+						}
+					})
+				})
+			</script>
 		</body>
 	</html>
+}
+
+templ Nav(){
+	<nav x-data="{ open: true }" @click.outside="open=false"
+		class="fixed top-0 flex px-6 py-3 justify-between items-center w-full shadow-md bg-gray-100 z-20">
+		<a href={templ.SafeURL("/")} class=" text-2xl">
+			ralfazza.com
+		</a>
+		<button @click="open = !open">
+			<svg class="w-12 h-12 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+				height="24" fill="none" viewBox="0 0 24 24">
+				<path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
+			</svg>
+		</button>
+		<div :class="{ 'translate-x-0': open, 'translate-x-full': !open }"
+			class="z-20 fixed top-0 right-0 w-80 h-full bg-gray-900 shadow-lg transform transition-transform duration-300 ease-in-out translate-x-full
+			px-6 py-3 flex flex-col justify-between rounded-tl-xl rounded-bl-xl">
+			<div class="">
+				<div class="flex justify-between items-center mb-4">
+					<a href="/" class="text-xl text-white hover:text-gray-300">
+						Home
+					</a>
+					<button @click="open = !open">
+						<svg class="w-10 h-10 text-white hover:text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+							width="24" height="24" fill="none" viewBox="0 0 24 24">
+							<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+								d="M6 18 17.94 6M18 18 6.06 6" />
+						</svg>
+					</button>
+				</div>
+				<div class="text-white text-xl -ml-2 flex flex-col w-full">
+					// @NavLink("Home","/")
+					@NavLink("Projects","/projects")
+					@NavLink("Experience","/experience")
+					@NavLink("Gallery","/gallery")
+				</div>
+			</div>
+		</div>
+	</nav>
+}
+
+templ NavLink(name string, path string){
+	<a href={templ.SafeURL(path)}
+		class="nav-link w-full p-2 rounded-md">
+		{name}
+	</a>
 }
 
 templ Footer(){
@@ -55,5 +120,4 @@ templ Footer(){
 			document.getElementById("currentYear").textContent = new Date().getFullYear();
 		</script>
 	</div>
-
 }
