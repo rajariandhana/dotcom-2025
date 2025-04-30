@@ -3,6 +3,7 @@ package server
 import (
 	"dotcom-2025/cmd/web"
 	"dotcom-2025/cmd/web/home"
+	"dotcom-2025/cmd/web/projects"
 	"net/http"
 	"os"
 
@@ -24,6 +25,7 @@ func (s *FiberServer) RegisterFiberRoutes() {
 	}))
 
 	s.App.Get("/", adaptor.HTTPHandler(templ.Handler(home.Home())))
+	s.App.Get("/projects", adaptor.HTTPHandler(templ.Handler(projects.Projects())))
 
 	s.App.Get("/health", s.healthHandler)
 
